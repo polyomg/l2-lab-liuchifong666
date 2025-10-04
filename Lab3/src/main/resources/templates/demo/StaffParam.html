@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Detail</title></head>
+<body>
+<h2>Staff Detail</h2>
+
+<p>ID: <span th:text="${staff.id}"></span></p>
+<p>Fullname: <span th:text="${staff.fullname}"></span></p>
+<p>Salary: <span th:text="${#numbers.formatInteger(staff.salary,0,'POINT')}"></span> VNĐ</p>
+<p>Level: <span th:text="${staff.level}"></span></p>
+<p>Gender: <span th:text="${staff.gender} ? 'Nam' : 'Nữ'"></span></p>
+
+
+<img th:src="@{'/images/' + ${staff.photo}}" alt="photo" style="max-height:120px;">
+
+<p><a th:href="@{/staff/index}">Back</a></p>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Staff List</title></head>
+<body>
+<h2>Staff List</h2>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Ảnh</th>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Level</th>
+    <th>Salary (VND)</th>
+  </tr>
+  <tr th:each="s : ${list}">
+    <td><img th:src="@{'/images/' + ${s.photo}}" style="height:50px"></td>
+    <td th:text="${s.id}"></td>
+    <td th:text="${s.fullname}"></td>
+    <td th:text="${s.gender} ? 'Nam' : 'Nữ'"></td>
+    <td th:text="${#lists.isEmpty(levels) ? s.level : levels[s.level]}"></td>
+    <td th:text="${#numbers.formatInteger(s.salary,0,'POINT')}"></td>
+  </tr>
+</table>
+
+<p><a th:href="@{/staff/index}">Back</a></p>
+</body>
+</html>
