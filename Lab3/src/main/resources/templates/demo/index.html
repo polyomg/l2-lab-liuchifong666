@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Lab3 Menu</title></head>
+<body>
+<h2>Lab3 Menu</h2>
+<p>Thời gian: <span th:text="${#dates.format(now,'dd/MM/yyyy HH:mm:ss')}"></span></p>
+<ul>
+  <li><a th:href="@{/staff/form}">Form Staff</a></li>
+  <li><a th:href="@{/staff/param}">Xem Detail </a></li>
+  <li><a th:href="@{/staff/control}">Danh sách </a></li>
+</ul>
+</body>
+</html>
