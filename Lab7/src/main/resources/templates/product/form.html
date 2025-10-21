@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Product Form</title></head>
+<body>
+  <h2 th:text="${product.id == null ? 'Create Product' : 'Edit Product'}"></h2>
+
+  <form th:action="@{/product/save}" th:object="${product}" method="post">
+    <div>
+      <label>ID</label>
+      <input th:field="*{id}" th:readonly="${product.id != null}">
+    </div>
+    <div>
+      <label>Name</label>
+      <input th:field="*{name}">
+    </div>
+    <div>
+      <label>Price</label>
+      <input th:field="*{price}" type="number" step="0.01">
+    </div>
+    <div>
+      <label>Create Date</label>
+      <input th:field="*{createDate}" type="date">
+    </div>
+    <!-- Nếu có category thì thêm select ở đây, còn không thì bỏ -->
+    <div>
+      <button type="submit">Save</button>
+      <a th:href="@{/product/list}">Back</a>
+    </div>
+  </form>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Inventory by Category</title></head>
+<body>
+  <h2>Inventory by Category</h2>
+  <table border="1" style="width:100%">
+    <tr>
+      <th>Category</th>
+      <th>Count</th>
+      <th>Sum</th>
+      <th>Min</th>
+      <th>Max</th>
+      <th>Avg</th>
+    </tr>
+    <tr th:each="i : ${items}">
+      <td th:text="${i[0]}"></td>
+      <td th:text="${i[1]}"></td>
+      <td th:text="${i[2]}"></td>
+      <td th:text="${i[3]}"></td>
+      <td th:text="${i[4]}"></td>
+      <td th:text="${i[5]}"></td>
+    </tr>
+  </table>
+  <p><a th:href="@{/product/list}">Back</a></p>
+</body>
+</html>

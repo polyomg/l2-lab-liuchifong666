@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Sorting</title>
+</head>
+<body>
+  <h3>SORTING BY <span th:text="${field}"></span></h3>
+
+  
+  <p>
+    <a th:href="@{/product/sort(field='id')}">Sort by ID</a> |
+    <a th:href="@{/product/sort(field='name')}">Sort by Name</a> |
+    <a th:href="@{/product/sort(field='price')}">Sort by Price</a> |
+    <a th:href="@{/product/sort(field='createDate')}">Sort by Date</a> |
+    <a th:href="@{/home}">Back to Home</a>
+  </p>
+
+  <table border="1" width="100%">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Create Date</th>
+    </tr>
+    <th:block th:each="p : ${items}">
+      <tr>
+        <td th:text="${p.id}"></td>
+        <td th:text="${p.name}"></td>
+        <td th:text="${p.price}"></td>
+        <td th:text="${#dates.format(p.createDate, 'yyyy-MM-dd')}"></td>
+      </tr>
+    </th:block>
+  </table>
+</body>
+</html>
