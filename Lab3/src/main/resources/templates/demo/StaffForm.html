@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Form</title></head>
+<body>
+<h2>Staff Form</h2>
+
+
+<form th:action="@{/staff/param}" th:object="${staff}" method="post">
+  <div>ID: <input type="text" th:field="*{id}" /></div>
+
+  <div>Full name: <input type="text" th:field="*{fullname}" /></div>
+
+ 
+  <div>Photo file name: <input type="text" th:field="*{photo}" placeholder="avatar.jpg" /></div>
+
+  <div>Gender:
+    <label><input type="radio" th:field="*{gender}" th:value="true" /> Nam</label>
+    <label><input type="radio" th:field="*{gender}" th:value="false" /> Nữ</label>
+  </div>
+
+  <div>Birthday: <input type="date" th:field="*{birthday}" /></div>
+
+  <div>Salary (VND): <input type="text" th:field="*{salary}" placeholder="5.000.000" /></div>
+
+  <div>Level:
+    <select th:field="*{level}">
+      <option th:each="lv, i : ${levels}" th:value="${i.index}" th:text="${lv}"></option>
+    </select>
+  </div>
+
+  <button type="submit">Xem Detail</button>
+</form>
+
+<p><a th:href="@{/staff/index}">Back</a></p>
+</body>
+</html>

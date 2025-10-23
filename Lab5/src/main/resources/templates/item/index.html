@@ -1,0 +1,45 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh mục sản phẩm</title>
+  <style>
+    table { border-collapse: collapse; width: 520px }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left }
+    .right { text-align: right }
+  </style>
+</head>
+<body>
+<h2>Danh mục sản phẩm</h2>
+
+<p>
+  <a href="/account/login">Đăng nhập</a> |
+  <a href="/account/register">Đăng ký (upload)</a> |
+  <a href="/cart">Xem giỏ hàng</a>
+</p>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Tên</th>
+    <th class="right">Giá</th>
+    <th>Thao tác</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="it : ${items}">
+    <td th:text="${it.id}">1</td>
+    <td th:text="${it.name}">Samsung</td>
+    <td class="right" th:text="${#numbers.formatDecimal(it.price,1,'COMMA',2,'POINT')}">10.00</td>
+    <td>
+      <form th:action="@{/cart/add/{id}(id=${it.id})}" method="post" style="display:inline">
+        <button type="submit">Add to Cart</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

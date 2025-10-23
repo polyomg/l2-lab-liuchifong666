@@ -1,0 +1,15 @@
+<!-- templates/category/table.html -->
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="table">
+  <table border="1" style="width:100%">
+    <tr>
+      <th>Id</th><th>Name</th><th></th>
+    </tr>
+    <th:block th:each="c : ${items}">
+      <tr>
+        <td th:text="${c.id}"></td>
+        <td th:text="${c.name}"></td>
+        <td><a th:href="@{|/category/edit/${c.id}|}">Edit</a></td>
+      </tr>
+    </th:block>
+  </table>
+</div>

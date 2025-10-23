@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Product List</title></head>
+<body>
+  <h2>Product List</h2>
+
+  <p th:if="${msg}" th:text="${msg}"></p>
+
+  <p>
+    <a th:href="@{/product/create}">Create New</a> |
+    <a th:href="@{/product/search-price}">Search by Price</a> |
+    <a th:href="@{/product/search-name}">Search by Name</a> |
+    <a th:href="@{/report/inventory-by-category}">Inventory Report</a>
+  </p>
+
+  <table border="1" style="width:100%">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Create Date</th>
+      <th>Action</th>
+    </tr>
+    <tr th:each="p : ${items}">
+      <td th:text="${p.id}"></td>
+      <td th:text="${p.name}"></td>
+      <td th:text="${p.price}"></td>
+      <td th:text="${#dates.format(p.createDate,'yyyy-MM-dd')}"></td>
+      <td>
+        <a th:href="@{'/product/edit/' + ${p.id}}">Edit</a>
+        <form th:action="@{'/product/delete/' + ${p.id}}" method="post" style="display:inline">
+          <button type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
